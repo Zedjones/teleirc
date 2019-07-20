@@ -20,7 +20,6 @@ script: yarn test
 notifications:
   irc:
     channels:
-      - "ircs://chat.freenode.net:6697/#rit-lug-sysadmin"
       - "ircs://chat.freenode.net:6697/#ritlug-teleirc"
     template:
       - "[%{repository_name}:%{branch}@%{commit} - build #%{build_number}] CI %{result}! (%{build_url})"
