@@ -23,7 +23,7 @@ jobs:
       
     - name: Fetch tags
       run: |
-        get fetch --tags
+        git fetch --tags
 
     - name: Get dependencies
       run: |
