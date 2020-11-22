@@ -20,6 +20,10 @@ jobs:
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
+      
+    - name: Fetch tags
+      run: |
+        get fetch --tags
 
     - name: Get dependencies
       run: |
