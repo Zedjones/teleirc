@@ -38,4 +38,5 @@ jobs:
     - name: Upload x86 binary
       uses: actions/upload-artifact@v2.2.1
       with:
+        name: teleirc
         path: ./teleirc
