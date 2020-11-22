@@ -30,7 +30,7 @@ jobs:
         fi
 
     - name: Build
-      run: go build -v .
+      run: ./build_binary.sh
 
     - name: Test
-      run: go test -v .
+      run: go test -v ./...
