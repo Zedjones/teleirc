@@ -15,6 +15,7 @@ pids
 # Generated executables
 teleirc
 cmd/cmd
+output
 
 
 ############################# ----- EXTRA DOCKERFILES ----- #############################
