@@ -33,7 +33,7 @@ jobs:
         fi
 
     - name: Build
-      run: ./build_binary.sh
+      run: ./build_binary.sh -a
         
     - name: Create Release
       id: create_release
@@ -46,13 +46,57 @@ jobs:
         draft: true
         prerelease: false
         
-    - name: Upload Release Asset
-      id: upload-release-asset 
+    - name: Upload x86 Linux binary
+      id: upload-x86-linux
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./teleirc
+        asset_path: ./output/teleirc-x86-linux
         asset_name: teleirc-x86-linux
         asset_content_type: application/octet-stream
+        
+    - name: Upload x86 Windows binary
+      id: upload-x86-windows 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./output/teleirc-x86-windows.exe
+        asset_name: teleirc-x86-windows.exe
+        asset_content_type: application/octet-stream
+        
+    - name: Upload x86 MacOS binary
+      id: upload-x86-darwin 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./output/teleirc-x86-darwin
+        asset_name: teleirc-x86-darwin
+        asset_content_type: application/octet-stream 
+        
+    - name: Upload x86 OpenBSD binary
+      id: upload-x86-openbsd
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./output/teleirc-x86-openbsd
+        asset_name: teleirc-x86-darwin
+        asset_content_type: application/octet-stream 
+        
+    - name: Upload ARM Linux binary
+      id: upload-arm-linux
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./output/teleirc-arm-linux
+        asset_name: teleirc-arm-linux
+        asset_content_type: application/octet-stream 
